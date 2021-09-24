@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+<csrf disabled="true"></csrf>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+
+    <label for="name">First Name</label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <label for="lastName">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <br/>
+    <label for="age">Age</label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <br/>
+    <label for="eMail">Email</label>
+    <input type="text" th:field="*{eMail}" id="eMail"/>
+    <br/>
+    <label for="password">Password</label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <br>
+
+    <div>
+        <p>Select role: </p>
+        <select name="roles" multiple required size="3">
+            <option disabled selected>Select role</option>
+            <div th:each="role : ${allRoles}">
+                <option name="roles" th:text="${role.getRole()}" th:value="${role.getRole()}"></option>
+            </div>
+        </select>
+    </div>
+
+
+    <input type="submit" value="Change user"/>
+
+</form>
+</body>
+</html>

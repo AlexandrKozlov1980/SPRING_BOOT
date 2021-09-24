@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+<csrf disabled="true"></csrf>
+<head>
+    <meta charset="UTF-8">
+    <title>Show user</title>
+</head>
+<body>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Role</th>
+        </tr>
+
+        <tr th:each="usr : ${user}">
+            <td th:utext="${usr.getId()}"></td>
+            <td th:utext="${usr.getName()}"></td>
+            <td th:utext="${usr.getLastName()}"></td>
+            <td th:utext="${usr.getAge()}"></td>
+            <td th:utext="${usr.getEMail()}"></td>
+            <td th:utext="${usr.getPassword()}"></td>
+            <td th:utext="${usr.getRole()}"></td>
+        </tr>
+    </table>
+    <br>
+    <form method="GET" action="/logout">
+        <input type="submit" value="LOGOUT">
+    </form>
+</div>
+
+</body>
+</html>
